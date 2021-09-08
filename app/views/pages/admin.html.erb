@@ -1,0 +1,193 @@
+<body class="">
+<div id="site-border-left"></div>
+<div id="site-border-right"></div>
+<div id="site-border-top"></div>
+<div id="site-border-bottom"></div>
+<div class="hero-full-container background-image-container white-text-container" style="background-image: url('https://res.cloudinary.com/dz83jh064/image/upload/v1630962761/fondvierge_shtwyk.png')">
+<div class="section-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="section-container-spacer text-center">
+            <h1 class="h2">07 : Espace Admin</h1>
+          </div>
+          <div class="section-container-spacer text-center">
+            <h2 class="h2">Les messages en attente de validation</h2>
+
+
+          <% @messages = Message.where(statut: "standby")%>
+          <% if @messages.length == 0 %>
+            <div class="card">
+            <div class="card-header" style="background-color:grey;color:black;">
+                    #MAJSD</div>
+            <div class="card-body" style="background-color:white;color:black;">
+            <p class="card-text" style="background-color:white;color:black;" >Pas de messages pour le moment...</p>
+
+            </div>
+          </div>
+          <% else%>
+            <% @messages.each do |mess|%>
+            <div class="card">
+              <div class="card-header" style="background-color:grey;color:black;">
+                    Message publié le <%=mess.created_at.strftime("%d.%m.%Y") %></div>
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" ><%=mess.content%></p>
+
+                <%= link_to 'Accepter',  accept_message_path(id: mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
+                <%= link_to 'Refuser', refus_message_path(id: mess.id) , class:"btn btn-primary", style:"background-color:grey;color:black;"%>
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+        <%end%>
+</div>
+          <div class="section-container-spacer text-center">
+            <h2 class="h2">Les commentaires en attente de validation</h2>
+
+
+          <% @messagecommits = Messagecommit.where(statut: "standby")%>
+          <% if @messagecommits.length == 0 %>
+            <div class="card">
+            <div class="card-header" style="background-color:grey;color:black;">
+                    #MAJSD</div>
+            <div class="card-body" style="background-color:white;color:black;">
+            <p class="card-text" style="background-color:white;color:black;" >Pas de commentaires pour le moment...</p>
+
+            </div>
+          </div>
+          <% else%>
+            <% @messagecommits.each do |mess|%>
+            <div class="card">
+              <div class="card-header" style="background-color:grey;color:black;">
+                    Commentaire publié le <%=mess.created_at.strftime("%d.%m.%Y") %></div>
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" ><%=mess.content%></p>
+
+
+                <%= link_to 'Accepter',  accept_messagecommit_path(id: mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
+                <%= link_to 'Refuser', refus_messagecommit_path(id: mess.id) , class:"btn btn-primary", style:"background-color:grey;color:black;"%>
+
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+        <%end%>
+        </div>
+          <div class="section-container-spacer text-center">
+            <h2 class="h2">Activités des membres admin</h2>
+            <% @refuscommits = Messagecommit.where(statut: "no")%>
+            <% @acceptcommits = Messagecommit.where(statut: "yes")%>
+            <% @refusmessages = Message.where(statut: "no")%>
+            <% @acceptmessages = Message.where(statut: "yes")%>
+
+
+
+            <% if @refuscommits.length == 0%>
+
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Pas d'activité pour les refus de commentaires pour le moment...</p>
+
+              </div>
+            </div>
+
+            <% else%>
+
+            <% @refuscommits.each do |mess|%>
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Le membre admin n°<%=mess.traceur%> a refusé le commentaire proposé le <%=mess.created_at.strftime("%d.%m.%Y") %> dont le contenu était : <%=mess.content%></p>
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+          <%end%>
+
+          <% if @acceptcommits.length == 0%>
+
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Pas d'activité pour les acceptations de commentaires pour le moment...</p>
+
+              </div>
+            </div>
+
+          <%else%>
+
+          <% @acceptcommits.each do |mess|%>
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Le membre admin n°<%=mess.traceur%> a accepté le commentaire proposé le <%=mess.created_at.strftime("%d.%m.%Y") %> dont le contenu était : <%=mess.content%></p>
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+          <%end%>
+
+          <% if @refusmessages.length == 0%>
+
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Pas d'activité pour les refus de messages pour le moment...</p>
+
+              </div>
+            </div>
+
+          <%else%>
+
+          <% @refusmessages.each do |mess|%>
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Le membre admin n°<%=mess.traceur%> a refusé le message proposé le <%=mess.created_at.strftime("%d.%m.%Y") %> dont le contenu était : <%=mess.content%></p>
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+          <%end%>
+
+          <% if @acceptmessages.length == 0%>
+
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Pas d'activité pour les acceptations de messages pour le moment...</p>
+
+              </div>
+            </div>
+
+
+          <%else%>
+
+          <% @acceptmessages.each do |mess|%>
+            <div class="card">
+
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" >Le membre admin n°<%=mess.traceur%> a accepté le message proposé le <%=mess.created_at.strftime("%d.%m.%Y") %> dont le contenu était : <%=mess.content%></p>
+
+              </div>
+            </div>
+            <br>
+          <%end%>
+          <%end%>
+
+
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

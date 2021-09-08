@@ -1,8 +1,13 @@
+
 <body class="">
 <div id="site-border-left"></div>
 <div id="site-border-right"></div>
 <div id="site-border-top"></div>
 <div id="site-border-bottom"></div>
+
+<link href="/assets/main.3f6952e4.css" rel="stylesheet"></head>
+
+<script type="text/javascript" src="/assets/main.70a66962.js"></script>
  <!-- Add your content of header -->
 <div class="hero-full-container background-image-container white-text-container" style="background-image: url('https://res.cloudinary.com/dz83jh064/image/upload/v1630962761/fondvierge_shtwyk.png')">
 <div class="section-container">
@@ -10,19 +15,39 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
-            <h1 class="h2">03 : Écrire un message</h1>
+            <h1 class="h2">Voir et commenter un message</h1>
           </div>
+          <div class="card">
+              <div class="card-header" style="background-color:grey;color:black;">
+                   Contenu du message publié le <%=@message.created_at.strftime("%d.%m.%Y") %></div>
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" ><%=@message.content%></p>
+              </div>
+            </div>
+
+            <% @messagecommits.each do |commit|%>
+
+            <div class="card">
+
+              <div class="card-body" style="background-color:grey;color:black;">
+                <p class="card-text" style="background-color:grey;color:black;" >Publié le <%=commit.created_at.strftime("%d.%m.%Y")%> : <%=commit.content%></p>
+              </div>
+            </div>
+
+            <%end%>
+
+              <%= simple_form_for [@message, @messagecommit], class: 'login-box' do |f| %>
 
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
-              <%= simple_form_for [@message] do |f| %>
+
 
                <form action="" class="reveal-content">
                   <div class="row">
                     <div class="col-md-7">
 
                       <div class="form-group">
-                        <%= f.input :content, class: "form-control ", label:false, placeholder:"Écrivez votre message ici", input_html: {style: 'height:100px;'}, required: true %>
+                        <%= f.input :content, class: "form-control ", label:false, placeholder:"Écrivez votre commentaire ici", input_html: {style: 'height:100px;'}, required: true %>
                       </div>
 
                       <button style="background-color:white; color:grey;" type="submit" class="btn btn-default btn-lg">Soumettre à l'équipe</button>
@@ -57,11 +82,11 @@
                     </div>
                   </div>
                 </form>
-              <%end%>
 
             </div>
 
           </div>
+              <%end%>
 
        </div>
       </div>

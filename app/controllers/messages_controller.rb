@@ -39,7 +39,7 @@ skip_before_action :authenticate_user!, only: [:new, :create]
 
   def accept_message
 
-    @message = Message.where(id: mess.id)
+    @message = Message.find(params[:id])
     @message.traceur = current_user.id
     @message.statut = "yes"
     @message.save
@@ -49,7 +49,7 @@ skip_before_action :authenticate_user!, only: [:new, :create]
 
   def refus_message
 
-    @message = Message.where(id: mess.id)
+    @message = Message.find(params[:id])
     @message.traceur = current_user.id
     @message.statut = "no"
     @message.save

@@ -9,35 +9,38 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
-            <h1 class="h2">01 : About me</h1>
+            <h1 class="h2">02 : Les messages</h1>
           </div>
+          <% @messages = Message.where(statut: "yes")%>
+          <% if @messages.length == 0 %>
+            <div class="card">
+            <div class="card-header" style="background-color:grey;color:black;">
+                    #MAJSD</div>
+            <div class="card-body" style="background-color:white;color:black;">
+            <p class="card-text" style="background-color:white;color:black;" >Pas de messages pour le moment...</p>
 
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <div class="row">
-                <div class="col-xs-12 col-md-6">
-                  <h3>Consectetur adipiscing elit</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas luctus at sem quis varius.
-                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ultrices hendrerit nisl.</p>
-                  <h3>Ut enim ad minim </h3>
-                  <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                  <h3>Maecenas luctus at sem quis varius</h3>
-                  <p>
-                  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus iaculis magna sagittis elit sagittis, at hendrerit lorem venenatis. Morbi accumsan iaculis blandit. Cras ultrices hendrerit nisl.</p>
-                </div>
-                <div class="col-xs-12 col-md-6">
-
-                </div>
-              </div>
             </div>
           </div>
 
 
-       </div>
+
+          <% else%>
+            <% @messages.each do |mess|%>
+            <div class="card">
+              <div class="card-header" style="background-color:grey;color:black;">
+                    Message publié le <%=mess.created_at.strftime("%d.%m.%Y") %></div>
+              <div class="card-body" style="background-color:white;color:black;">
+                <p class="card-text" style="background-color:white;color:black;" ><%=mess.content%></p>
+
+                <%= link_to 'Voir le message',  new_message_messagecommit_path(mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
+              </div>
+            </div>
+            <br>
+          <%end%>
+        <%end%>
       </div>
     </div>
   </div>
+</div>
 </div>
 

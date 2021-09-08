@@ -5,21 +5,26 @@ class MessagecommitsController < ApplicationController
   def new
 
     @messagecommit = Messagecommit.new
+    @messagecommits = Messagecommit.where(message_id: params[:message_id], statut:"yes")
+    @message = Message.find(params[:message_id])
+
+
 
   end
 
   def create
 
     @messagecommit = Messagecommit.new(messagecommit_params)
-    @message = Message.where(id: @messagecommit.message_id)
     @messagecommit.statut = "standby"
     @messagecommit.traceur = "standby"
+    @messagecommit.message_id = params[:message_id]
+
     if @messagecommit.save
       flash[:notice] = 'Votre commentaire a été soumis à l équipe admin merci !'
-      redirect_to new_messagecommit_path(@messagecommit.id)
+      redirect_to new_message_messagecommit_path(params[:message_id])
     else
       flash[:notice] = 'Un problème est survenu ! Si le problème persiste, contactez l équipe'
-      redirect_to new_messagecommit_path(@messagecommit.id)
+      redirect_to new_message_messagecommit_path(params[:message_id])
     end
 
   end
@@ -40,7 +45,7 @@ class MessagecommitsController < ApplicationController
 
   def accept_messagecommit
 
-    @messagecommit = Messagecommit.where(id: mess.id)
+    @messagecommit = Messagecommit.find(params[:id])
     @messagecommit.traceur = current_user.id
     @messagecommit.statut = "yes"
     @messagecommit.save
@@ -50,7 +55,7 @@ class MessagecommitsController < ApplicationController
 
   def refus_messagecommit
 
-    @messagecommit = Messagecommit.where(id: mess.id)
+    @messagecommit = Messagecommit.find(params[:id])
     @messagecommit.traceur = current_user.id
     @messagecommit.statut = "no"
     @messagecommit.save
@@ -62,7 +67,7 @@ class MessagecommitsController < ApplicationController
   private
 
   def messagecommit_params
-    params.require(:message).permit(:content, :traceur, :statut)
+    params.require(:messagecommit).permit(:content, :traceur, :statut)
   end
 
 end

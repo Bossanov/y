@@ -19,6 +19,7 @@
           <li><a href="<%=pages_admin_path%>" title="">07 : Espace Admin</a></li>
           <% if current_user.present?%>
             <li><a href="<%=destroy_user_session_path%>" title="">08 : Déconnexion</a></li>
+
           <%end%>
 
         </ul>

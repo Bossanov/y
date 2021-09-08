@@ -10,19 +10,26 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
-            <h1 class="h2">03 : Écrire un message</h1>
+            <h1 class="h2">Voir et commenter un message</h1>
           </div>
+
+
+              <%@message = Message.where(id: params[:id])%>
+              <%@messagecommits = Messagecommit.where(message_id: @message.last.id) %>
+              <%@messagecommit = Messagecommit.new%>
+
 
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
-              <%= simple_form_for [@message] do |f| %>
+              <%= simple_form_for [@message, @messagecommit], class: 'login-box' do |f| %>
+
 
                <form action="" class="reveal-content">
                   <div class="row">
                     <div class="col-md-7">
 
                       <div class="form-group">
-                        <%= f.input :content, class: "form-control ", label:false, placeholder:"Écrivez votre message ici", input_html: {style: 'height:100px;'}, required: true %>
+                        <%= f.input :content, class: "form-control ", label:false, placeholder:"Écrivez votre commentaire ici", input_html: {style: 'height:100px;'}, required: true %>
                       </div>
 
                       <button style="background-color:white; color:grey;" type="submit" class="btn btn-default btn-lg">Soumettre à l'équipe</button>
