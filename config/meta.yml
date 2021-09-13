@@ -1,0 +1,5 @@
+meta_product_name: "MoiAussiJeSuisDentiste #MAJSD"
+meta_title: "Moi aussi je suis dentiste"
+meta_description: "#MAJSD permettra à tout chirurgien-dentiste français de s’exprimer anonymement et ce sans se faire démonter."
+meta_image: "home.png" # should exist in `app/assets/images/`
+twitter_account: "@MAJSDentiste"   # required for Twitter Cards
