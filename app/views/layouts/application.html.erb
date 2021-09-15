@@ -3,6 +3,9 @@
   <head>
    <title><%= meta_title %></title>
    <meta name="description" content="<%= meta_description %>">
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
 
    <!-- Facebook Open Graph data -->
    <meta property="og:title" content="<%= meta_title %>" />
@@ -20,16 +23,18 @@
    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
    <meta name="twitter:image:src" content="<%= meta_image %>">
 
-   <link href="../assets/main.3f6952e4.css" rel="stylesheet">
    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-icon-180x180.png">
    <link href="../assets/favicon.ico" rel="icon">
-
-   <script type="text/javascript" src="../assets/main.70a66962.js"></script>
-
+   <link href="../assets/main.3f6952e4.css" rel="stylesheet">
   </head>
-  <body>
+  <body class="minimal">
+    <div id="site-border-left"></div>
+    <div id="site-border-right"></div>
+    <div id="site-border-top"></div>
+    <div id="site-border-bottom"></div>
     <%= render 'shared/navbar'%>
     <%= yield %>
     <%= render 'shared/flashes' %>
   </body>
+   <script type="text/javascript" src="../assets/main.70a66962.js"></script>
 </html>
