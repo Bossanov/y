@@ -60,7 +60,7 @@ skip_before_action :authenticate_user!, only: [:new, :create]
   private
 
   def message_params
-    params.require(:message).permit(:content, :traceur, :statut)
+    params.require(:message).permit(:content, :traceur, :statut, photos: [])
   end
 
 end

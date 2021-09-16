@@ -1,4 +1,5 @@
 <body class="">
+
 <div id="site-border-left"></div>
 <div id="site-border-right"></div>
 <div id="site-border-top"></div>
@@ -30,6 +31,17 @@
             <div class="card">
               <div class="card-header" style="background-color:grey;color:black;">
                     Message publié le <%=mess.created_at.strftime("%d.%m.%Y") %></div>
+
+
+              <% if mess.photos.attached?%>
+                  <% mess.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+              <%end%>
+
+
+
+
               <div class="card-body" style="background-color:white;color:black;">
                 <p class="card-text" style="background-color:white;color:black;" ><%=mess.content%></p>
 

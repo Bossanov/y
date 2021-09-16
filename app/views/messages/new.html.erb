@@ -24,7 +24,11 @@
                       <div class="form-group">
                         <%= f.input :content, class: "form-control ", label:false, placeholder:"Écrivez votre message ici", input_html: {style: 'height:100px;'}, required: true %>
                       </div>
+                      <div class="form-group" style="color:white;">
 
+                        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+                      </div>
                       <button style="background-color:white; color:grey;" type="submit" class="btn btn-default btn-lg">Soumettre à l'équipe</button>
                     </div>
                     <div class="col-md-5 address-container">

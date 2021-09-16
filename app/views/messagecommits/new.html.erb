@@ -20,7 +20,18 @@
           <div class="card">
               <div class="card-header" style="background-color:grey;color:black;">
                    Contenu du message publié le <%=@message.created_at.strftime("%d.%m.%Y") %></div>
+
+
+
               <div class="card-body" style="background-color:white;color:black;">
+                <% if @message.photos.attached?%>
+
+                  <% @message.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+
+
+              <%end%>
                 <p class="card-text" style="background-color:white;color:black;" ><%=@message.content%></p>
               </div>
             </div>
@@ -31,6 +42,10 @@
 
               <div class="card-body" style="background-color:grey;color:black;">
                 <p class="card-text" style="background-color:grey;color:black;" >Publié le <%=commit.created_at.strftime("%d.%m.%Y")%> : <%=commit.content%></p>
+                <% if current_user%>
+                  <%= link_to 'Effacer', refus_messagecommit_path(id: commit.id) , class:"btn btn-primary", style:"background-color:grey;color:black;"%>
+
+                <%end%>
               </div>
             </div>
 
