@@ -1,17 +1,17 @@
 Message.destroy_all
 Messagecommit.destroy_all
 User.destroy_all
-puts "***--- ADMIN #1 CREATION ---***"
+puts "***--- ADMIN #1 CREATION ---***Antoine"
 user = User.create!(
     email: "admin1@gmail.com",
     password: "7676HGJG786?",
 )
-puts "***--- ADMIN #2 CREATION ---***"
+puts "***--- ADMIN #2 CREATION ---***Nathalie"
 user = User.create!(
     email: "admin2@gmail.com",
     password: "5434JHGFHFD?",
 )
-puts "***--- ADMIN #3 CREATION ---***"
+puts "***--- ADMIN #3 CREATION ---***Valery"
 user = User.create!(
     email: "admin3@gmail.com",
     password: "098897FDSKILHJ?",

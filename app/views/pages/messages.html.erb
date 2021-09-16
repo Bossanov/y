@@ -34,7 +34,7 @@
                 <p class="card-text" style="background-color:white;color:black;" >Nombre de commentaires= <%= Messagecommit.where(message_id: mess.id, statut:"yes").count%>  Nombre de photos attachées= <%=mess.photos.count%></p>
 
 
-                <%= link_to 'Voir le message',  new_message_messagecommit_path(mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
+                <%= link_to 'Voir le message et commenter',  new_message_messagecommit_path(mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
                 <% if current_user%>
                 <%= link_to 'Effacer',  refus_message_path(id: mess.id) , class:"btn btn-primary" ,style:"background-color:grey;color:black;"%>
                 <%end%>
