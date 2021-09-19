@@ -10,6 +10,7 @@
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
             <h1 class="h2">02 : Les messages</h1>
+            <h3>Ici vous trouverez l'ensemble des messages de la plateforme</h3>
           </div>
           <% @messages = Message.where(statut: "yes")%>
           <% if @messages.length == 0 %>

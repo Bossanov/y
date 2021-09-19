@@ -1,9 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :about, :messages, :pourquoi, :fonctionnement, :mentions_legales]
+  skip_before_action :authenticate_user!, only: [:home, :about,:charte, :messages, :pourquoi, :fonctionnement, :mentions_legales]
   def home
   end
 
   def about
+  end
+
+  def charte
   end
 
   def messages

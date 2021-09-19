@@ -16,12 +16,12 @@ user = User.create!(
     email: "admin3@gmail.com",
     password: "098897FDSKILHJ?",
 )
-puts "***--- ADMIN #4 CREATION ---***"
+puts "***--- ADMIN #4 CREATION ---Cécile***"
 user = User.create!(
     email: "admin4@gmail.com",
     password: "432432JHJYFDR?",
 )
-puts "***--- ADMIN #5 CREATION ---***"
+puts "***--- ADMIN #5 CREATION ---Christophe***"
 user = User.create!(
     email: "admin5@gmail.com",
     password: "90786JHFHGF?",

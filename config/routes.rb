@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'pages/messages'
   get 'pages/fonctionnement'
   get 'pages/mentions_legales'
+  get 'pages/charte'
 
 
   get 'refus_message', to: 'messages#refus_message'

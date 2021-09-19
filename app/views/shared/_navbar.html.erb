@@ -14,10 +14,11 @@
           <li><a href="<%=new_message_path%>" title="">03 : Écrire un message</a></li>
           <li><a href="<%=pages_pourquoi_path%>" title="">04 : Pourquoi #MAJSD</a></li>
           <li><a href="<%=pages_fonctionnement_path%>" title="">05 : Notre fonctionnement</a></li>
-          <li><a href="<%=pages_mentions_legales_path%>" title="">06 : Mentions légales</a></li>
-          <li><a href="<%=pages_admin_path%>" title="">07 : Espace Admin</a></li>
+          <li><a href="<%=pages_charte_path%>" title="">06 : Notre charte de modération</a></li>
+          <li><a href="<%=pages_mentions_legales_path%>" title="">07 : Mentions légales</a></li>
+          <li><a href="<%=pages_admin_path%>" title="">08 : Espace Admin</a></li>
           <% if current_user.present?%>
-            <li><a href="<%=destroy_user_session_path%>" title="">08 : Déconnexion</a></li>
+            <li><a href="<%=destroy_user_session_path%>" title="">09 : Déconnexion</a></li>
           <%end%>
         </ul>
       </div>
