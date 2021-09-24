@@ -1,6 +1,10 @@
 Message.destroy_all
 Messagecommit.destroy_all
 User.destroy_all
+
+private
+
+
 puts "***--- ADMIN #1 CREATION ---***Antoine"
 user = User.create!(
     email: "admin1@gmail.com",
